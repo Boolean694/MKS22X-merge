@@ -12,8 +12,24 @@ public class Merge {
     int li = 0;
     int hi = 0;
     int ind = 0;
-    while(ind < dat.length && hi < hra.length && li < lra.length) {
-      if(lra[li] >= hra[hi]) {
+    while(ind < dat.length) {
+      if(li >= lra.length) {
+        while(hi < hra.length) {
+          dat[ind] = hra[hi];
+          ind++;
+          hi++;
+        }
+        return;
+      }
+      else if(hi >= hra.length) {
+        while(li < lra.length) {
+          dat[ind] = lra[li];
+          ind++;
+          li++;
+        }
+        return;
+      }
+      else if(lra[li] >= hra[hi]) {
         dat[ind] = hra[hi];
         hi++;
       }
@@ -25,7 +41,7 @@ public class Merge {
     }
   }
   public static void main(String[] javabeans) {
-    int[] da = {8,6,7,5,12,2,4,0,3,1,9};
+    int[] da = {4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,1,1,1,1,6,1,1,1,1,1,1};
     mergesort(da);
     for(int q = 0; q < da.length; q++) {
       System.out.print(da[q] + " ");
