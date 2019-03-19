@@ -9,20 +9,26 @@ public class Merge {
     int[] hra = Arrays.copyOfRange(dat, (dat.length + 1) / 2, dat.length);
     msh(lra, 0, lra.length - 1);
     msh(hra, 0, hra.length - 1);
-    for(int q = 0; q < lra.length; q++) {
-      if(lra[q] >= hra[q]) {
-        dat[q] = hra[q];
+    int li = 0;
+    int hi = 0;
+    int ind = 0;
+    while(ind < dat.length && hi < hra.length && li < lra.length) {
+      if(lra[li] >= hra[hi]) {
+        dat[ind] = hra[hi];
+        hi++;
       }
       else {
-        dat[q] = lra[q];
+        dat[ind] = lra[li];
+        li++;
       }
+      ind++;
     }
   }
   public static void main(String[] javabeans) {
-    int[] da = {8,6,7,5,12,2,4,0,3,1,9,10};
+    int[] da = {8,6,7,5,12,2,4,0,3,1,9};
     mergesort(da);
-/*    for(int q = 0; q < da.length; q++) {
+    for(int q = 0; q < da.length; q++) {
       System.out.print(da[q] + " ");
-    } */
+    }
   }
 }
